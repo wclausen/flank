@@ -1,7 +1,10 @@
 package ftl.cli.firebase.test.android
 
+import com.fasterxml.jackson.core.type.TypeReference
 import flank.common.logLn
+import ftl.analytics.Segment
 import ftl.args.AndroidArgs
+import ftl.args.ArgsHelper
 import ftl.args.setupLogLevel
 import ftl.args.validate
 import ftl.cli.firebase.test.CommonRunCommand
@@ -53,11 +56,15 @@ class AndroidRunCommand : CommonRunCommand(), Runnable {
         configPath = FtlConstants.defaultAndroidConfig
     }
 
+    fun x() {
+    }
+
     override fun run() {
         if (dryRun) {
             MockServer.start()
         }
 
+        Segment.identifyUser("test number 1")
         AndroidArgs.load(Paths.get(configPath), cli = this).apply {
             setupLogLevel()
             logLn(this)
@@ -66,12 +73,35 @@ class AndroidRunCommand : CommonRunCommand(), Runnable {
                 TEST_TYPE to type?.name.orEmpty()
             )
         }.validate().run {
+            sendConfiguration()
             runBlocking {
                 if (dumpShards) dumpShards()
                 else newTestRun()
             }
         }
     }
+
+    fun AndroidArgs.sendConfiguration() {
+        val defaultArgs = AndroidArgs.default()
+        val defaultArgsMap = defaultArgs.objectToMap()
+        val defaultCommonArgs = defaultArgs.commonArgs.objectToMap()
+        objectToMap().filter { it.key != "commonArgs" }.getNonDefaultArgs(defaultArgsMap)
+            .plus(commonArgs.objectToMap().getNonDefaultArgs(defaultCommonArgs))
+            .let {
+                it.forEach { (key, value) ->
+                    println("Config $key: $value")
+                }
+                Segment.logConfiguration(it)
+            }
+    }
+    private fun Map<String, Any>.getNonDefaultArgs(defaultArgs: Map<String, Any>) =
+        keys.fold(mapOf<String, Any?>()) { acc, key ->
+            acc.compareValues(key, this, defaultArgs[key])
+        }
+    private fun Map<String, Any?>.compareValues(key: String, source: Map<String, Any>, defaultValue: Any?) =
+        if (source[key] != defaultValue) this + (key to source[key])
+        else this
+    private fun Any.objectToMap() = ArgsHelper.yamlMapper.convertValue(this, object : TypeReference<Map<String, Any>>() {})
 
     @Option(
         names = ["--dump-shards"],

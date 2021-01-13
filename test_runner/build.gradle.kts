@@ -234,6 +234,8 @@ dependencies {
     implementation(Dependencies.COMMON_TEXT)
 
     implementation(Dependencies.JANSI)
+
+    implementation(Dependencies.SEGMENT)
 }
 
 buildscript {
