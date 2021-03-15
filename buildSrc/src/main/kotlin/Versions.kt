@@ -57,26 +57,17 @@ object Versions {
 
     const val JUNIT = "4.13.2"
 
-    // https://github.com/jhy/jsoup/releases
-    const val JSOUP = "1.13.1"
-
     // https://github.com/ktorio/ktor/releases
     const val KTOR = "1.5.2"
 
     // https://github.com/qos-ch/logback/releases
     const val LOGBACK = "1.2.3"
 
-    // https://github.com/square/okhttp/releases
-    const val OKHTTP = "4.9.1"
-
     // https://github.com/stefanbirkner/system-rules/releases
     const val SYSTEM_RULES = "1.19.0"
 
     // https://github.com/google/truth/releases
     const val TRUTH = "1.1.2"
-
-    // https://github.com/FasterXML/woodstox/releases
-    const val WOODSTOX = "6.2.4"
 
     const val KOTLIN_LOGGING = "2.0.6"
 
@@ -98,7 +89,6 @@ object Versions {
     // ============== flank-scripts ==============
     const val KOTLIN_SERIALIZATION = "1.1.0"
     const val ARCHIVE_LIB = "1.1.0"
-    const val TUKAANI_XZ = "1.9"
     const val FUEL = "2.3.1"
     const val CLIKT = "2.8.0"
     const val JCABI_GITHUB = "1.1.2"

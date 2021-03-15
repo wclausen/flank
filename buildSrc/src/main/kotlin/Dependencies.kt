@@ -21,7 +21,6 @@ object Dependencies {
 
     const val KOTLIN_COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}"
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect:${Versions.KOTLIN}"
-    const val KOTLIN_STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
 
     //region ktor
     const val KTOR_GSON = "io.ktor:ktor-gson:${Versions.KTOR}"
@@ -36,8 +35,6 @@ object Dependencies {
 
     const val LOGBACK = "ch.qos.logback:logback-classic:${Versions.LOGBACK}"
 
-    const val WOODSTOX = "com.fasterxml.woodstox:woodstox-core:${Versions.WOODSTOX}"
-
     const val KOTLIN_LOGGING = "io.github.microutils:kotlin-logging:${Versions.KOTLIN_LOGGING}"
 
     const val JANSI = "org.fusesource.jansi:jansi:${Versions.JANSI}"
@@ -45,9 +42,7 @@ object Dependencies {
     const val PROGUARD = "com.guardsquare:proguard-gradle:${Versions.PROGUARD}"
 
     //region Test Dependencies
-    const val JSOUP = "org.jsoup:jsoup:${Versions.JSOUP}"
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
-    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val PICOCLI = "info.picocli:picocli:${Versions.PICOCLI}"
     const val PICOCLI_CODEGEN = "info.picocli:picocli-codegen:${Versions.PICOCLI}"
     const val SYSTEM_RULES = "com.github.stefanbirkner:system-rules:${Versions.SYSTEM_RULES}"
@@ -60,15 +55,15 @@ object Dependencies {
 
     //region flank-scripts
     const val ARCHIVE_LIB = "org.rauschig:jarchivelib:${Versions.ARCHIVE_LIB}"
-    const val TUKAANI_XZ = "org.tukaani:xz:${Versions.TUKAANI_XZ}"
     const val CLIKT = "com.github.ajalt:clikt:${Versions.CLIKT}"
     const val JCABI_GITHUB = "com.jcabi:jcabi-github:${Versions.JCABI_GITHUB}"
     const val SLF4J_NOP = "org.slf4j:slf4j-nop:${Versions.SLF4J_NOP}"
+
     object Fuel {
         const val CORE = "com.github.kittinunf.fuel:fuel:${Versions.FUEL}"
         const val COROUTINES = "com.github.kittinunf.fuel:fuel-coroutines:${Versions.FUEL}"
-        const val KOTLINX_SERIALIZATION = "com.github.kittinunf.fuel:fuel-kotlinx-serialization:${Versions.FUEL}"
     }
+
     const val GLASSFISH_JSON = "org.glassfish:javax.json:${Versions.GLASSFISH_JSON}"
     //endregion
 }
